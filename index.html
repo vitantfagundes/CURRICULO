@@ -1,406 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vitória Fagundes — CV</title>
+<!-- SKILLS -->
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<section class="section">
 
-<style>
-  :root {
-    --black: #0a0a0a;
-    --white: #f5f5f0;
-    --gray: #888;
-    --light-gray: #d0d0d0;
-    --rule: 1px solid #222;
-  }
+  <div class="section-title">
+    Skills
+  </div>
 
-  *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  <div class="section-content">
 
-  html {
-    background: var(--black);
-  }
+    <div class="skill-group">
+      <div class="skill-label">Tools</div>
 
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'Roboto', sans-serif;
-    font-size: 13px;
-    line-height: 1.7;
-    min-height: 100vh;
-  }
-
-  /* NOISE OVERLAY */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
-
-  .page {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 80px 60px;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* HEADER */
-  header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    gap: 40px;
-    border-bottom: 1px solid var(--white);
-    padding-bottom: 32px;
-    margin-bottom: 56px;
-    animation: fadeUp 0.8s ease both;
-  }
-
-  .name {
-    font-family: 'Roboto', sans-serif;
-    font-size: clamp(34px, 5vw, 52px);
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.5px;
-    color: var(--white);
-  }
-
-  .contact {
-    text-align: right;
-    font-size: 11px;
-    color: var(--gray);
-    line-height: 2;
-  }
-
-  .contact a {
-    color: var(--white);
-    text-decoration: none;
-    border-bottom: 1px solid var(--gray);
-    transition: border-color 0.2s;
-  }
-
-  .contact a:hover {
-    border-color: var(--white);
-  }
-
-  /* GRID LAYOUT */
-  .layout {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 0;
-  }
-
-  /* SECTION */
-  .section {
-    display: contents;
-    animation: fadeUp 0.8s ease both;
-  }
-
-  .section-label {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gray);
-    padding: 40px 40px 0 0;
-    border-top: var(--rule);
-    margin-top: 0;
-    padding-top: 32px;
-  }
-
-  .section-content {
-    padding: 32px 0 0 0;
-    border-top: var(--rule);
-  }
-
-  /* SUMMARY */
-  .summary p {
-    color: var(--light-gray);
-    font-size: 13px;
-    line-height: 1.9;
-    margin-bottom: 12px;
-  }
-
-  /* JOB */
-  .job {
-    margin-bottom: 40px;
-  }
-
-  .job-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 16px;
-    margin-bottom: 4px;
-    flex-wrap: wrap;
-  }
-
-  .job-company {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    color: var(--white);
-    font-weight: 500;
-  }
-
-  .job-period {
-    font-size: 10px;
-    color: var(--gray);
-    letter-spacing: 0.1em;
-    white-space: nowrap;
-  }
-
-  .job-title {
-    font-size: 11px;
-    color: var(--gray);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .job ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .job ul li {
-    color: var(--light-gray);
-    padding-left: 16px;
-    position: relative;
-    margin-bottom: 6px;
-    font-size: 12.5px;
-    line-height: 1.7;
-  }
-
-  .job ul li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--gray);
-    font-size: 10px;
-    top: 3px;
-  }
-
-  /* EDUCATION */
-  .edu-item {
-    margin-bottom: 24px;
-  }
-
-  .edu-school {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    color: var(--white);
-    margin-bottom: 2px;
-    font-weight: 500;
-  }
-
-  .edu-degree {
-    color: var(--light-gray);
-    font-size: 12px;
-    margin-bottom: 2px;
-  }
-
-  .edu-year {
-    font-size: 10px;
-    color: var(--gray);
-    letter-spacing: 0.1em;
-  }
-
-  /* SKILLS */
-  .skill-row {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 16px;
-    margin-bottom: 14px;
-    font-size: 12px;
-  }
-
-  .skill-label {
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray);
-    padding-top: 1px;
-  }
-
-  .skill-items {
-    color: var(--light-gray);
-    line-height: 1.8;
-  }
-
-  .skill-tag {
-    display: inline-block;
-    border: 1px solid #333;
-    padding: 2px 10px;
-    margin: 3px 4px 3px 0;
-    font-size: 11px;
-    color: var(--light-gray);
-    border-radius: 999px;
-    transition: all 0.15s;
-  }
-
-  .skill-tag:hover {
-    border-color: var(--white);
-    color: var(--white);
-  }
-
-  /* LANGUAGES */
-  .lang-row {
-    display: flex;
-    gap: 8px;
-    align-items: baseline;
-    margin-bottom: 8px;
-    font-size: 12px;
-  }
-
-  .lang-name {
-    color: var(--white);
-    min-width: 100px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-  }
-
-  .lang-level {
-    color: var(--gray);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-  }
-
-  /* FOOTER */
-  footer {
-    margin-top: 64px;
-    border-top: var(--rule);
-    padding-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 10px;
-    color: #444;
-    letter-spacing: 0.1em;
-    animation: fadeUp 1s ease both;
-    animation-delay: 0.4s;
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .section {
-    animation-delay: calc(var(--i, 0) * 0.1s);
-  }
-
-  /* MOBILE */
-  @media (max-width: 768px) {
-    .page {
-      padding: 48px 24px;
-    }
-
-    header {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-
-    .contact {
-      text-align: left;
-    }
-
-    .layout {
-      grid-template-columns: 1fr;
-    }
-
-    .section-label {
-      padding-right: 0;
-      padding-bottom: 12px;
-    }
-
-    .skill-row {
-      grid-template-columns: 1fr;
-      gap: 6px;
-    }
-  }
-
-  /* PRINT */
-  @media print {
-    body {
-      background: white;
-      color: black;
-    }
-
-    body::before {
-      display: none;
-    }
-
-    .skill-tag {
-      border-color: #ccc;
-      color: #333;
-    }
-
-    .section-label,
-    .job-period,
-    .edu-year,
-    .lang-level {
-      color: #666;
-    }
-
-    .job ul li,
-    .summary p,
-    .skill-items,
-    .edu-degree {
-      color: #333;
-    }
-
-    .name {
-      color: black;
-    }
-  }
-</style>
-</head>
-
-<body>
-
-<div class="page">
-
-  <header>
-    <div>
-      <div class="name">Vitória Fagundes</div>
+      <div class="tags">
+        <span class="tag">SAP SuccessFactors</span>
+        <span class="tag">SAP Compensation</span>
+        <span class="tag">SAP Variable Pay</span>
+        <span class="tag">ServiceNow</span>
+        <span class="tag">Jira</span>
+        <span class="tag">TestLink</span>
+        <span class="tag">SQL</span>
+        <span class="tag">XML</span>
+        <span class="tag">Robot Framework</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+      </div>
     </div>
 
-    <div class="contact">
-      Brazil<br>
-      +55 (51) 9 9483-3231<br>
+    <div class="skill-group">
+      <div class="skill-label">Testing & QA</div>
 
-      <a href="mailto:vitantfag@gmail.com">
-        vitantfag@gmail.com
-      </a><br>
-
-      <a href="https://linkedin.com/in/vitantfagundes" target="_blank">
-        linkedin.com/in/vitantfagundes
-      </a><br>
-
-      <a href="https://github.com/vitantfagundes" target="_blank">
-        github.com/vitantfagundes
-      </a>
+      <div class="tags">
+        <span class="tag">Manual Testing</span>
+        <span class="tag">Functional Testing</span>
+        <span class="tag">Regression Testing</span>
+        <span class="tag">Smoke Testing</span>
+        <span class="tag">Exploratory Testing</span>
+        <span class="tag">Usability Testing</span>
+        <span class="tag">Test Case Creation</span>
+        <span class="tag">Test Plans</span>
+        <span class="tag">Bug Reporting</span>
+        <span class="tag">Defect Management</span>
+        <span class="tag">Requirements Validation</span>
+        <span class="tag">Feature Validation</span>
+      </div>
     </div>
-  </header>
 
-</div>
+    <div class="skill-group">
+      <div class="skill-label">Technical Support</div>
 
-</body>
-</html>
+      <div class="tags">
+        <span class="tag">Technical Troubleshooting</span>
+        <span class="tag">Log Analysis</span>
+        <span class="tag">Root Cause Analysis</span>
+        <span class="tag">Incident Management</span>
+        <span class="tag">SLA Management</span>
+        <span class="tag">Customer Support</span>
+        <span class="tag">Global Support</span>
+        <span class="tag">System Configuration</span>
+        <span class="tag">Business Rules Validation</span>
+        <span class="tag">Escalation Handling</span>
+        <span class="tag">Technical Documentation</span>
+        <span class="tag">KBA Creation</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">AI & Learning</div>
+
+      <div class="tags">
+        <span class="tag">Generative AI</span>
+        <span class="tag">LLMs</span>
+        <span class="tag">Prompt Engineering</span>
+        <span class="tag">Test Automation Studies</span>
+      </div>
+    </div>
+
+  </div>
+
+</section>
