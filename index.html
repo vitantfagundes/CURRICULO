@@ -1,345 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vitória Antunes Fagundes — CV</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Vitória Fagundes — Resume</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --black: #0a0a0a;
-    --white: #f5f5f0;
-    --gray: #888;
-    --light-gray: #d0d0d0;
-    --rule: 1px solid #222;
+
+:root{
+  --black:#0a0a0a;
+  --white:#f5f5f0;
+  --gray:#888;
+  --light-gray:#d0d0d0;
+  --rule:1px solid #222;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+  background:var(--black);
+}
+
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:'Roboto',sans-serif;
+  font-size:13px;
+  line-height:1.7;
+  min-height:100vh;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size:4px 4px;
+  pointer-events:none;
+  z-index:0;
+}
+
+.page{
+  max-width:980px;
+  margin:0 auto;
+  padding:80px 60px;
+  position:relative;
+  z-index:1;
+}
+
+/* HEADER */
+
+header{
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:end;
+  gap:40px;
+  border-bottom:1px solid var(--white);
+  padding-bottom:32px;
+  margin-bottom:56px;
+  animation:fadeUp .8s ease both;
+}
+
+.name{
+  font-size:clamp(42px,6vw,68px);
+  line-height:1;
+  font-weight:500;
+  letter-spacing:-2px;
+}
+
+.contact{
+  text-align:right;
+  font-size:12px;
+  color:var(--gray);
+  line-height:2;
+}
+
+.contact a{
+  color:var(--white);
+  text-decoration:none;
+  border-bottom:1px solid #333;
+  transition:.2s ease;
+}
+
+.contact a:hover{
+  border-color:var(--white);
+}
+
+/* LAYOUT */
+
+.layout{
+  display:grid;
+  grid-template-columns:200px 1fr;
+}
+
+.section{
+  display:contents;
+}
+
+.section-label{
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gray);
+  padding:32px 40px 0 0;
+  border-top:var(--rule);
+}
+
+.section-content{
+  border-top:var(--rule);
+  padding-top:32px;
+}
+
+/* SUMMARY */
+
+.summary p{
+  color:var(--light-gray);
+  font-size:14px;
+  line-height:1.9;
+  margin-bottom:18px;
+}
+
+/* EXPERIENCE */
+
+.job{
+  margin-bottom:44px;
+}
+
+.job-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:6px;
+}
+
+.job-company{
+  font-size:20px;
+  font-weight:500;
+}
+
+.job-period{
+  font-size:10px;
+  color:var(--gray);
+  letter-spacing:.12em;
+}
+
+.job-title{
+  font-size:11px;
+  text-transform:uppercase;
+  color:var(--gray);
+  letter-spacing:.12em;
+  margin-bottom:18px;
+}
+
+.job ul{
+  list-style:none;
+}
+
+.job li{
+  position:relative;
+  padding-left:18px;
+  margin-bottom:8px;
+  color:var(--light-gray);
+  line-height:1.8;
+}
+
+.job li::before{
+  content:"—";
+  position:absolute;
+  left:0;
+  color:var(--gray);
+}
+
+/* EDUCATION */
+
+.edu-item{
+  margin-bottom:28px;
+}
+
+.edu-school{
+  font-size:17px;
+  font-weight:500;
+  margin-bottom:4px;
+}
+
+.edu-degree{
+  color:var(--light-gray);
+  margin-bottom:4px;
+}
+
+.edu-year{
+  font-size:10px;
+  color:var(--gray);
+  letter-spacing:.12em;
+}
+
+/* SKILLS */
+
+.skill-group{
+  margin-bottom:26px;
+}
+
+.skill-label{
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--gray);
+  margin-bottom:12px;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.tag{
+  border:1px solid #333;
+  padding:5px 12px;
+  border-radius:999px;
+  font-size:11px;
+  color:var(--light-gray);
+  transition:.2s ease;
+}
+
+.tag:hover{
+  border-color:var(--white);
+  color:var(--white);
+}
+
+/* LANGUAGES */
+
+.lang-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.lang-name{
+  min-width:100px;
+  font-weight:500;
+}
+
+.lang-level{
+  color:var(--gray);
+  font-size:11px;
+  letter-spacing:.1em;
+}
+
+/* BUTTON */
+
+.download-section{
+  margin-top:70px;
+  text-align:center;
+}
+
+.download-btn{
+  background:transparent;
+  border:1px solid var(--white);
+  color:var(--white);
+  padding:16px 34px;
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.25s ease;
+}
+
+.download-btn:hover{
+  background:var(--white);
+  color:var(--black);
+}
+
+/* FOOTER */
+
+footer{
+  margin-top:60px;
+  border-top:var(--rule);
+  padding-top:20px;
+  display:flex;
+  justify-content:space-between;
+  font-size:10px;
+  color:#444;
+  letter-spacing:.1em;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(18px);
   }
 
-  *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+  .page{
+    padding:48px 24px;
   }
 
-  html {
-    background: var(--black);
-    scroll-behavior: smooth;
+  header{
+    grid-template-columns:1fr;
+    align-items:start;
   }
 
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'Roboto', sans-serif;
-    font-size: 13px;
-    line-height: 1.7;
-    min-height: 100vh;
+  .contact{
+    text-align:left;
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 4px 4px;
-    pointer-events: none;
-    z-index: 0;
+  .layout{
+    grid-template-columns:1fr;
   }
 
-  .page {
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 80px 60px;
-    position: relative;
-    z-index: 1;
+  .section-label{
+    padding-right:0;
+    padding-bottom:12px;
   }
 
-  /* HEADER */
+}
 
-  header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    gap: 40px;
-    border-bottom: 1px solid var(--white);
-    padding-bottom: 32px;
-    margin-bottom: 56px;
-    animation: fadeUp 0.8s ease both;
+/* PRINT / PDF */
+
+@media print{
+
+  body{
+    background:white !important;
+    color:black !important;
   }
 
-  .name {
-    font-size: clamp(42px, 6vw, 68px);
-    line-height: 1;
-    font-weight: 500;
-    letter-spacing: -2px;
-    color: var(--white);
+  body::before{
+    display:none;
   }
 
-  .contact {
-    text-align: right;
-    font-size: 12px;
-    color: var(--gray);
-    line-height: 2;
+  .download-section{
+    display:none;
   }
 
-  .contact a {
-    color: var(--white);
-    text-decoration: none;
-    border-bottom: 1px solid #333;
-    transition: .2s ease;
+  .page{
+    max-width:100%;
+    padding:30px;
   }
 
-  .contact a:hover {
-    border-color: var(--white);
+  .tag{
+    border:1px solid #999;
+    color:black;
   }
 
-  /* GRID */
-
-  .layout {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 0;
+  footer{
+    color:#777;
   }
 
-  .section {
-    display: contents;
+  a{
+    color:black !important;
+    text-decoration:none;
   }
 
-  .section-label {
-    font-size: 10px;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: var(--gray);
-    padding: 32px 40px 0 0;
-    border-top: var(--rule);
-  }
-
-  .section-content {
-    border-top: var(--rule);
-    padding-top: 32px;
-  }
-
-  /* SUMMARY */
-
-  .summary p {
-    color: var(--light-gray);
-    font-size: 14px;
-    line-height: 1.9;
-    margin-bottom: 18px;
-  }
-
-  /* EXPERIENCE */
-
-  .job {
-    margin-bottom: 44px;
-  }
-
-  .job-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 16px;
-    margin-bottom: 6px;
-    flex-wrap: wrap;
-  }
-
-  .job-company {
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--white);
-  }
-
-  .job-period {
-    font-size: 10px;
-    color: var(--gray);
-    letter-spacing: .12em;
-  }
-
-  .job-title {
-    font-size: 11px;
-    text-transform: uppercase;
-    color: var(--gray);
-    letter-spacing: .12em;
-    margin-bottom: 18px;
-  }
-
-  .job ul {
-    list-style: none;
-  }
-
-  .job li {
-    position: relative;
-    padding-left: 18px;
-    margin-bottom: 8px;
-    color: var(--light-gray);
-    font-size: 13px;
-    line-height: 1.8;
-  }
-
-  .job li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    color: var(--gray);
-  }
-
-  /* EDUCATION */
-
-  .edu-item {
-    margin-bottom: 28px;
-  }
-
-  .edu-school {
-    font-size: 17px;
-    font-weight: 500;
-    margin-bottom: 4px;
-  }
-
-  .edu-degree {
-    color: var(--light-gray);
-    font-size: 13px;
-    margin-bottom: 4px;
-  }
-
-  .edu-year {
-    font-size: 10px;
-    color: var(--gray);
-    letter-spacing: .12em;
-  }
-
-  /* SKILLS */
-
-  .skill-group {
-    margin-bottom: 26px;
-  }
-
-  .skill-label {
-    font-size: 10px;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 12px;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .tag {
-    border: 1px solid #333;
-    padding: 5px 12px;
-    border-radius: 999px;
-    font-size: 11px;
-    color: var(--light-gray);
-    transition: .2s ease;
-  }
-
-  .tag:hover {
-    border-color: var(--white);
-    color: var(--white);
-  }
-
-  /* LANGUAGES */
-
-  .lang-row {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-    align-items: center;
-  }
-
-  .lang-name {
-    min-width: 100px;
-    font-weight: 500;
-    color: var(--white);
-  }
-
-  .lang-level {
-    color: var(--gray);
-    font-size: 11px;
-    letter-spacing: .1em;
-  }
-
-  /* DOWNLOAD BUTTON */
-
-  .download-section {
-    margin-top: 70px;
-    text-align: center;
-  }
-
-  .download-btn {
-    display: inline-block;
-    padding: 16px 34px;
-    border: 1px solid var(--white);
-    color: var(--white);
-    text-decoration: none;
-    font-size: 12px;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    transition: .25s ease;
-  }
-
-  .download-btn:hover {
-    background: var(--white);
-    color: var(--black);
-  }
-
-  /* FOOTER */
-
-  footer {
-    margin-top: 60px;
-    border-top: var(--rule);
-    padding-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 10px;
-    color: #444;
-    letter-spacing: .1em;
-  }
-
-  /* ANIMATION */
-
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(18px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* MOBILE */
-
-  @media (max-width: 768px) {
-
-    .page {
-      padding: 48px 24px;
-    }
-
-    header {
-      grid-template-columns: 1fr;
-      align-items: start;
-    }
-
-    .contact {
-      text-align: left;
-    }
-
-    .layout {
-      grid-template-columns: 1fr;
-    }
-
-    .section-label {
-      padding-right: 0;
-      padding-bottom: 12px;
-    }
-  }
+}
 
 </style>
 </head>
@@ -348,341 +383,346 @@
 
 <div class="page">
 
-  <header>
+<header>
 
-    <div>
-      <div class="name">
-        Vitória Fagundes
-      </div>
+  <div>
+    <div class="name">
+      Vitória Fagundes
     </div>
-
-    <div class="contact">
-      Brazil<br>
-      +55 (51) 9 9483-3231<br>
-
-      <a href="mailto:vitantfag@gmail.com">
-        vitantfag@gmail.com
-      </a><br>
-
-      <a href="https://linkedin.com/in/vitantfagundes" target="_blank">
-        linkedin.com/in/vitantfagundes
-      </a><br>
-
-      <a href="https://github.com/vitantfagundes" target="_blank">
-        github.com/vitantfagundes
-      </a>
-    </div>
-
-  </header>
-
-  <div class="layout">
-
-    <!-- SUMMARY -->
-
-    <section class="section">
-
-      <div class="section-label">
-        Summary
-      </div>
-
-      <div class="section-content summary">
-
-        <p>
-          Technology professional with experience in global technical support, software quality assurance, troubleshooting, and application validation.
-        </p>
-
-        <p>
-          Working since 2023 in technology roles focused on QA, technical support, incident investigation, and functional validation — combining analytical thinking with clear communication across technical and business teams.
-        </p>
-
-        <p>
-          Experienced in log analysis, XML configuration, root cause investigation, manual testing, feature validation, test case creation, and technical troubleshooting for enterprise systems and applications.
-        </p>
-
-        <p>
-          Currently deepening expertise in Robot Framework, test automation, Generative AI, LLMs, and prompt engineering.
-        </p>
-
-      </div>
-
-    </section>
-
-    <!-- EXPERIENCE -->
-
-    <section class="section">
-
-      <div class="section-label">
-        Experience
-      </div>
-
-      <div class="section-content">
-
-        <div class="job">
-
-          <div class="job-header">
-            <span class="job-company">SAP</span>
-            <span class="job-period">MAR 2025 — PRESENT</span>
-          </div>
-
-          <div class="job-title">
-            SuccessFactors Support Engineer — Compensation
-          </div>
-
-          <ul>
-
-            <li>Provide technical and functional support for SAP SuccessFactors Compensation and Variable Pay modules.</li>
-
-            <li>Perform troubleshooting through log analysis, XML review, systemic validations, and root cause investigation.</li>
-
-            <li>Handle global support incidents through ServiceNow while ensuring SLA compliance.</li>
-
-            <li>Work directly with international customers in English.</li>
-
-            <li>Create KBAs, technical documentation, troubleshooting guides, and internal support materials.</li>
-
-            <li>Execute manual functional testing and feature validation before releases and fixes.</li>
-
-            <li>Validate business rules, integrations, compensation behaviors, and system configurations.</li>
-
-            <li>Collaborate with Engineering and Product teams during escalated technical investigations.</li>
-
-            <li>Develop structured test scenarios and reusable validation cases for issue reproduction.</li>
-
-          </ul>
-
-        </div>
-
-        <div class="job">
-
-          <div class="job-header">
-            <span class="job-company">W.A.T.I</span>
-            <span class="job-period">JAN 2023 — MAR 2025</span>
-          </div>
-
-          <div class="job-title">
-            Software Quality Analyst
-          </div>
-
-          <ul>
-
-            <li>Developed and executed test plans and reusable test cases using TestLink.</li>
-
-            <li>Performed manual functional, regression, exploratory, smoke, and usability testing.</li>
-
-            <li>Created test scenarios and validations for new implementations and software releases.</li>
-
-            <li>Managed defects and validation cycles through Jira.</li>
-
-            <li>Supported developers through log analysis, bug investigation, and troubleshooting activities.</li>
-
-            <li>Worked with business requirement validation and software quality assurance processes.</li>
-
-            <li>Participated in QA process improvements and internal standardization initiatives.</li>
-
-            <li>Represented the QA team during MPS.BR and CMMI certifications.</li>
-
-          </ul>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- EDUCATION -->
-
-    <section class="section">
-
-      <div class="section-label">
-        Education
-      </div>
-
-      <div class="section-content">
-
-        <div class="edu-item">
-          <div class="edu-school">Fadergs</div>
-
-          <div class="edu-degree">
-            Information Technology Management
-          </div>
-
-          <div class="edu-year">
-            EXPECTED 2027
-          </div>
-        </div>
-
-        <div class="edu-item">
-
-          <div class="edu-school">ULBRA</div>
-
-          <div class="edu-degree">
-            Systems Analysis and Development
-          </div>
-
-          <div class="edu-year">
-            GRADUATED 2024
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- SKILLS -->
-
-    <section class="section">
-
-      <div class="section-label">
-        Skills
-      </div>
-
-      <div class="section-content">
-
-        <div class="skill-group">
-
-          <div class="skill-label">
-            Tools
-          </div>
-
-          <div class="tags">
-
-            <span class="tag">SAP SuccessFactors</span>
-            <span class="tag">SAP Compensation</span>
-            <span class="tag">SAP Variable Pay</span>
-            <span class="tag">ServiceNow</span>
-            <span class="tag">Jira</span>
-            <span class="tag">TestLink</span>
-            <span class="tag">SQL</span>
-            <span class="tag">XML</span>
-            <span class="tag">Robot Framework</span>
-            <span class="tag">GitHub</span>
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JavaScript</span>
-
-          </div>
-
-        </div>
-
-        <div class="skill-group">
-
-          <div class="skill-label">
-            Testing & QA
-          </div>
-
-          <div class="tags">
-
-            <span class="tag">Manual Testing</span>
-            <span class="tag">Functional Testing</span>
-            <span class="tag">Regression Testing</span>
-            <span class="tag">Smoke Testing</span>
-            <span class="tag">Exploratory Testing</span>
-            <span class="tag">Usability Testing</span>
-            <span class="tag">Test Case Creation</span>
-            <span class="tag">Test Plans</span>
-            <span class="tag">Feature Validation</span>
-            <span class="tag">Requirements Validation</span>
-            <span class="tag">Bug Reporting</span>
-            <span class="tag">Defect Management</span>
-            <span class="tag">Test Scenarios</span>
-            <span class="tag">Test Automation</span>
-            
-
-          </div>
-
-        </div>
-
-        <div class="skill-group">
-
-          <div class="skill-label">
-            Technical Support
-          </div>
-
-          <div class="tags">
-
-            <span class="tag">Technical Troubleshooting</span>
-            <span class="tag">Log Analysis</span>
-            <span class="tag">Root Cause Analysis</span>
-            <span class="tag">Incident Management</span>
-            <span class="tag">SLA Management</span>
-            <span class="tag">Global Support</span>
-            <span class="tag">Customer Support</span>
-            <span class="tag">System Configuration</span>
-            <span class="tag">Escalation Handling</span>
-            <span class="tag">Business Rules Validation</span>
-            <span class="tag">Technical Documentation</span>
-            <span class="tag">KBA Creation</span>
-
-          </div>
-
-        </div>
-
-        <div class="skill-group">
-
-          <div class="skill-label">
-            AI & Learning
-          </div>
-
-          <div class="tags">
-
-            <span class="tag">Generative AI</span>
-            <span class="tag">LLMs</span>
-            <span class="tag">Prompt Engineering</span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- LANGUAGES -->
-
-    <section class="section">
-
-      <div class="section-label">
-        Languages
-      </div>
-
-      <div class="section-content">
-
-        <div class="lang-row">
-          <span class="lang-name">Portuguese</span>
-          <span class="lang-level">NATIVE</span>
-        </div>
-
-        <div class="lang-row">
-          <span class="lang-name">English</span>
-          <span class="lang-level">FLUENT</span>
-        </div>
-
-        <div class="lang-row">
-          <span class="lang-name">Spanish</span>
-          <span class="lang-level">BASIC</span>
-        </div>
-
-      </div>
-
-    </section>
-
   </div>
 
-  <!-- DOWNLOAD BUTTON -->
+  <div class="contact">
+    Brazil<br>
+    +55 (51) 9 9483-3231<br>
 
-  <div class="download-section">
+    <a href="mailto:vitantfag@gmail.com">
+      vitantfag@gmail.com
+    </a><br>
 
-    <a class="download-btn" href="CV_Vitoria_EN.PDF" download>
-      CLICK HERE TO DOWNLOAD MY RESUME
+    <a href="https://linkedin.com/in/vitantfagundes" target="_blank">
+      linkedin.com/in/vitantfagundes
+    </a><br>
+
+    <a href="https://github.com/vitantfagundes" target="_blank">
+      github.com/vitantfagundes
     </a>
+  </div>
+
+</header>
+
+<div class="layout">
+
+<!-- SUMMARY -->
+
+<section class="section">
+
+  <div class="section-label">
+    Summary
+  </div>
+
+  <div class="section-content summary">
+
+    <p>
+      Technology professional with experience in global technical support, software quality assurance, troubleshooting, and application validation.
+    </p>
+
+    <p>
+      Working since 2023 in technology roles focused on QA, technical support, incident investigation, and functional validation — combining analytical thinking with clear communication across technical and business teams.
+    </p>
+
+    <p>
+      Experienced in log analysis, XML configuration, root cause investigation, manual testing, feature validation, test case creation, and technical troubleshooting for enterprise systems and applications.
+    </p>
+
+    <p>
+      Currently deepening expertise in Robot Framework, test automation, Generative AI, LLMs, and prompt engineering.
+    </p>
 
   </div>
 
-  <footer>
-    <span>VITÓRIA FAGUNDES</span>
-    <span>CV · 2026</span>
-  </footer>
+</section>
+
+<!-- EXPERIENCE -->
+
+<section class="section">
+
+  <div class="section-label">
+    Experience
+  </div>
+
+  <div class="section-content">
+
+    <div class="job">
+
+      <div class="job-header">
+        <span class="job-company">SAP</span>
+        <span class="job-period">MAR 2025 — PRESENT</span>
+      </div>
+
+      <div class="job-title">
+        SuccessFactors Support Engineer — Compensation
+      </div>
+
+      <ul>
+
+        <li>Provide technical and functional support for SAP SuccessFactors Compensation and Variable Pay modules.</li>
+
+        <li>Perform troubleshooting through log analysis, XML review, systemic validations, and root cause investigation.</li>
+
+        <li>Handle global support incidents through ServiceNow while ensuring SLA compliance.</li>
+
+        <li>Work directly with international customers in English.</li>
+
+        <li>Create KBAs, technical documentation, troubleshooting guides, and internal support materials.</li>
+
+        <li>Execute manual functional testing and feature validation before releases and fixes.</li>
+
+        <li>Validate business rules, integrations, compensation behaviors, and system configurations.</li>
+
+        <li>Collaborate with Engineering and Product teams during escalated technical investigations.</li>
+
+        <li>Develop structured test scenarios and reusable validation cases for issue reproduction.</li>
+
+      </ul>
+
+    </div>
+
+    <div class="job">
+
+      <div class="job-header">
+        <span class="job-company">W.A.T.I</span>
+        <span class="job-period">JAN 2023 — MAR 2025</span>
+      </div>
+
+      <div class="job-title">
+        Software Quality Analyst
+      </div>
+
+      <ul>
+
+        <li>Developed and executed test plans and reusable test cases using TestLink.</li>
+
+        <li>Performed manual functional, regression, exploratory, smoke, and usability testing.</li>
+
+        <li>Created test scenarios and validations for new implementations and software releases.</li>
+
+        <li>Managed defects and validation cycles through Jira.</li>
+
+        <li>Supported developers through log analysis, bug investigation, and troubleshooting activities.</li>
+
+        <li>Worked with business requirement validation and software quality assurance processes.</li>
+
+        <li>Participated in QA process improvements and internal standardization initiatives.</li>
+
+        <li>Represented the QA team during MPS.BR and CMMI certifications.</li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- EDUCATION -->
+
+<section class="section">
+
+  <div class="section-label">
+    Education
+  </div>
+
+  <div class="section-content">
+
+    <div class="edu-item">
+
+      <div class="edu-school">
+        Fadergs
+      </div>
+
+      <div class="edu-degree">
+        Information Technology Management
+      </div>
+
+      <div class="edu-year">
+        EXPECTED 2027
+      </div>
+
+    </div>
+
+    <div class="edu-item">
+
+      <div class="edu-school">
+        ULBRA
+      </div>
+
+      <div class="edu-degree">
+        Systems Analysis and Development
+      </div>
+
+      <div class="edu-year">
+        GRADUATED 2024
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section class="section">
+
+  <div class="section-label">
+    Skills
+  </div>
+
+  <div class="section-content">
+
+    <div class="skill-group">
+
+      <div class="skill-label">
+        Tools
+      </div>
+
+      <div class="tags">
+
+        <span class="tag">SAP SuccessFactors</span>
+        <span class="tag">SAP Compensation</span>
+        <span class="tag">SAP Variable Pay</span>
+        <span class="tag">ServiceNow</span>
+        <span class="tag">Jira</span>
+        <span class="tag">TestLink</span>
+        <span class="tag">SQL</span>
+        <span class="tag">XML</span>
+        <span class="tag">Robot Framework</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+
+      </div>
+
+    </div>
+
+    <div class="skill-group">
+
+      <div class="skill-label">
+        Testing & QA
+      </div>
+
+      <div class="tags">
+
+        <span class="tag">Manual Testing</span>
+        <span class="tag">Functional Testing</span>
+        <span class="tag">Regression Testing</span>
+        <span class="tag">Smoke Testing</span>
+        <span class="tag">Exploratory Testing</span>
+        <span class="tag">Usability Testing</span>
+        <span class="tag">Test Case Creation</span>
+        <span class="tag">Test Plans</span>
+        <span class="tag">Feature Validation</span>
+        <span class="tag">Requirements Validation</span>
+        <span class="tag">Bug Reporting</span>
+        <span class="tag">Defect Management</span>
+        <span class="tag">Test Scenarios</span>
+        <span class="tag">Test Automation</span>
+
+      </div>
+
+    </div>
+
+    <div class="skill-group">
+
+      <div class="skill-label">
+        Technical Support
+      </div>
+
+      <div class="tags">
+
+        <span class="tag">Technical Troubleshooting</span>
+        <span class="tag">Log Analysis</span>
+        <span class="tag">Root Cause Analysis</span>
+        <span class="tag">Incident Management</span>
+        <span class="tag">SLA Management</span>
+        <span class="tag">Global Support</span>
+        <span class="tag">Customer Support</span>
+        <span class="tag">System Configuration</span>
+        <span class="tag">Escalation Handling</span>
+        <span class="tag">Business Rules Validation</span>
+        <span class="tag">Technical Documentation</span>
+        <span class="tag">KBA Creation</span>
+
+      </div>
+
+    </div>
+
+    <div class="skill-group">
+
+      <div class="skill-label">
+        AI & Learning
+      </div>
+
+      <div class="tags">
+
+        <span class="tag">Generative AI</span>
+        <span class="tag">LLMs</span>
+        <span class="tag">Prompt Engineering</span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- LANGUAGES -->
+
+<section class="section">
+
+  <div class="section-label">
+    Languages
+  </div>
+
+  <div class="section-content">
+
+    <div class="lang-row">
+      <span class="lang-name">Portuguese</span>
+      <span class="lang-level">NATIVE</span>
+    </div>
+
+    <div class="lang-row">
+      <span class="lang-name">English</span>
+      <span class="lang-level">FLUENT</span>
+    </div>
+
+    <div class="lang-row">
+      <span class="lang-name">Spanish</span>
+      <span class="lang-level">BASIC</span>
+    </div>
+
+  </div>
+
+</section>
+
+</div>
+
+<!-- DOWNLOAD BUTTON -->
+
+<div class="download-section">
+
+  <button class="download-btn" onclick="window.print()">
+    DOWNLOAD RESUME PDF
+  </button>
+
+</div>
+
+<footer>
+  <span>VITÓRIA FAGUNDES</span>
+  <span>CV · 2026</span>
+</footer>
 
 </div>
 
