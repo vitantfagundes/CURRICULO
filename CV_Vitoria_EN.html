@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vitória Antunes Fagundes — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f5f0;
+    --gray: #888;
+    --light-gray: #d0d0d0;
+    --rule: 1px solid #222;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { background: var(--black); }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* HEADER */
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 40px;
+    border-bottom: 1px solid var(--white);
+    padding-bottom: 32px;
+    margin-bottom: 56px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .name {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1;
+    letter-spacing: -1px;
+    color: var(--white);
+  }
+
+  .name em {
+    font-style: italic;
+    color: var(--gray);
+  }
+
+  .contact {
+    text-align: right;
+    font-size: 11px;
+    color: var(--gray);
+    line-height: 2;
+  }
+
+  .contact a {
+    color: var(--white);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gray);
+    transition: border-color 0.2s;
+  }
+
+  .contact a:hover { border-color: var(--white); }
+
+  /* GRID LAYOUT */
+  .layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+  }
+
+  /* SECTION */
+  .section {
+    display: contents;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    padding: 40px 40px 0 0;
+    border-top: var(--rule);
+    margin-top: 0;
+    padding-top: 32px;
+  }
+
+  .section-content {
+    padding: 32px 0 0 0;
+    border-top: var(--rule);
+  }
+
+  /* SUMMARY */
+  .summary p {
+    color: var(--light-gray);
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 12px;
+  }
+
+  /* JOB */
+  .job { margin-bottom: 40px; }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+
+  .job-company {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px;
+    color: var(--white);
+  }
+
+  .job-period {
+    font-size: 10px;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .job-title {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .job ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .job ul li {
+    color: var(--light-gray);
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 6px;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+
+  .job ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gray);
+    font-size: 10px;
+    top: 3px;
+  }
+
+  /* EDUCATION */
+  .edu-item { margin-bottom: 24px; }
+
+  .edu-school {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+
+  .edu-degree {
+    color: var(--light-gray);
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+
+  .edu-year {
+    font-size: 10px;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+  }
+
+  /* SKILLS */
+  .skill-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 16px;
+    margin-bottom: 14px;
+    font-size: 12px;
+  }
+
+  .skill-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    padding-top: 1px;
+  }
+
+  .skill-items {
+    color: var(--light-gray);
+    line-height: 1.8;
+  }
+
+  .skill-tag {
+    display: inline-block;
+    border: 1px solid #333;
+    padding: 1px 8px;
+    margin: 2px 3px 2px 0;
+    font-size: 11px;
+    color: var(--light-gray);
+    transition: all 0.15s;
+  }
+
+  .skill-tag:hover {
+    border-color: var(--white);
+    color: var(--white);
+  }
+
+  /* LANGUAGES */
+  .lang-row {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+
+  .lang-name {
+    color: var(--white);
+    min-width: 100px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 15px;
+  }
+
+  .lang-level { color: var(--gray); font-size: 11px; letter-spacing: 0.1em; }
+
+  /* FOOTER */
+  footer {
+    margin-top: 64px;
+    border-top: var(--rule);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #444;
+    letter-spacing: 0.1em;
+    animation: fadeUp 1s ease both;
+    animation-delay: 0.4s;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section { animation-delay: calc(var(--i, 0) * 0.1s); }
+
+  /* PRINT */
+  @media print {
+    body { background: white; color: black; }
+    body::before { display: none; }
+    .skill-tag { border-color: #ccc; color: #333; }
+    .section-label, .job-period, .edu-year, .lang-level { color: #666; }
+    .job ul li, .summary p, .skill-items, .edu-degree { color: #333; }
+    .name { color: black; }
+    .name em { color: #666; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div>
+      <div class="name">Vitória <em>Antunes</em><br>Fagundes</div>
+    </div>
+    <div class="contact">
+      Brazil<br>
+      +55 (51) 9 9483-3231<br>
+      <a href="mailto:vitantfag@gmail.com">vitantfag@gmail.com</a><br>
+      <a href="https://linkedin.com/in/vitantfagundes" target="_blank">linkedin.com/in/vitantfagundes</a><br>
+      <a href="https://github.com/vitantfagundes" target="_blank">github.com/vitantfagundes</a>
+    </div>
+  </header>
+
+  <div class="layout">
+
+    <!-- SUMMARY -->
+    <div class="section" style="--i:1">
+      <div class="section-label">Summary</div>
+      <div class="section-content summary">
+        <p>Technology professional with over 3 years of experience in QA, technical support, troubleshooting, and application validation. Skilled in problem analysis, manual testing, functional validation, and international client support — combining analytical thinking with clear communication across technical and business teams.</p>
+        <p>Experienced in log analysis, XML configuration, root cause investigation, test case creation, and functional validation based on technical requirements and business rules. Actively collaborating with Engineering teams on incident investigation and resolution, while deepening expertise in test automation with Robot Framework, Generative AI, LLMs, and prompt engineering.</p>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section" style="--i:2">
+      <div class="section-label">Experience</div>
+      <div class="section-content">
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-company">SAP</span>
+            <span class="job-period">MAR 2025 — PRESENT</span>
+          </div>
+          <div class="job-title">SuccessFactors Support Engineer — Compensation</div>
+          <ul>
+            <li>Provide functional and technical support for the Compensation, Variable Pay, and Reward & Recognition modules of SAP SuccessFactors.</li>
+            <li>Perform advanced troubleshooting through log analysis, XML configuration review, and systemic validations for root cause identification.</li>
+            <li>Manage global incidents using ServiceNow, ensuring SLA compliance and continuous client communication.</li>
+            <li>Work directly with international clients in English, translating complex technical scenarios into clear and actionable guidance.</li>
+            <li>Execute manual functional tests to validate features, fixes, and new implementations prior to system releases.</li>
+            <li>Develop structured test scenarios and test cases, also used as foundation for future automation.</li>
+            <li>Validate functionalities based on technical requirements and business rules.</li>
+            <li>Collaborate with Engineering and Product Support teams on technical investigations and escalated cases.</li>
+            <li>Produce technical documentation, KBAs, and internal materials related to features, troubleshooting, and technical debt.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-company">W.A.T.I</span>
+            <span class="job-period">JAN 2023 — MAR 2025</span>
+          </div>
+          <div class="job-title">Software Quality Analyst</div>
+          <ul>
+            <li>Developed and executed test plans and test cases using TestLink.</li>
+            <li>Performed manual functional, regression, exploratory, smoke, and usability testing.</li>
+            <li>Designed test scenarios for new implementations and feature validation.</li>
+            <li>Structured reusable test cases to support future test automation efforts.</li>
+            <li>Analyzed business requirements with a focus on defect prevention and quality assurance.</li>
+            <li>Managed bugs and defect cycles via Jira, with complementary validations using SQL.</li>
+            <li>Supported developers in problem investigation through log analysis.</li>
+            <li>Participated in improvement and standardization of internal QA processes.</li>
+            <li>Contributed to onboarding of new team members.</li>
+            <li>Represented the QA team during MPS.BR and CMMI certifications.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section" style="--i:3">
+      <div class="section-label">Education</div>
+      <div class="section-content">
+        <div class="edu-item">
+          <div class="edu-school">Fadergs</div>
+          <div class="edu-degree">Information Technology Management</div>
+          <div class="edu-year">EXPECTED 2027</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">ULBRA</div>
+          <div class="edu-degree">Systems Analysis and Development</div>
+          <div class="edu-year">GRADUATED 2024</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section" style="--i:4">
+      <div class="section-label">Skills</div>
+      <div class="section-content">
+        <div class="skill-row">
+          <span class="skill-label">Tools</span>
+          <div class="skill-items">
+            <span class="skill-tag">ServiceNow</span><span class="skill-tag">Jira</span><span class="skill-tag">TestLink</span><span class="skill-tag">SQL</span><span class="skill-tag">XML</span><span class="skill-tag">Robot Framework</span><span class="skill-tag">SAP SuccessFactors</span><span class="skill-tag">KBA</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Practices</span>
+          <div class="skill-items">
+            <span class="skill-tag">Manual Testing</span><span class="skill-tag">Regression</span><span class="skill-tag">Smoke Testing</span><span class="skill-tag">Exploratory Testing</span><span class="skill-tag">Log Analysis</span><span class="skill-tag">Root Cause</span><span class="skill-tag">Incident Mgmt</span><span class="skill-tag">SLA Management</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Expertise</span>
+          <div class="skill-items">
+            <span class="skill-tag">QA</span><span class="skill-tag">Global Tech Support</span><span class="skill-tag">Test Automation</span><span class="skill-tag">Generative AI</span><span class="skill-tag">LLMs</span><span class="skill-tag">Prompt Engineering</span><span class="skill-tag">Technical Docs</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Processes</span>
+          <div class="skill-items">
+            <span class="skill-tag">MPS.BR</span><span class="skill-tag">CMMI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LANGUAGES -->
+    <div class="section" style="--i:5">
+      <div class="section-label">Languages</div>
+      <div class="section-content">
+        <div class="lang-row">
+          <span class="lang-name">Portuguese</span>
+          <span class="lang-level">NATIVE</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">English</span>
+          <span class="lang-level">FLUENT</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">Spanish</span>
+          <span class="lang-level">BASIC</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>VITÓRIA ANTUNES FAGUNDES</span>
+    <span>CV · 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
